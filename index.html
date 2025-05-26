@@ -5,9 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    
+    <div class="card">
+        <div class="search">
+            <input type="text" class="search-bar" placeholder="Search City">
+            <button> <i class="fa fa-search" aria-hidden="true"></i>
+            </button>
+        </div>
+        <div class="weather loading">
+            <h2 class="city">Weather in Denver</h2>
+            <h1 class="temp">51&deg; C</h1>
+            <div class="cloud">
+                <img src="https://openweathermap.org/img/wn/" alt="" class="icon" />
+                <div class="decription">Cloudy</div>
+            </div>
+            <div class="humidity">Humidity: 60%</div>
+            <div class="wind"> Wind Speed: 6.2 km/h</div>
+        </div>    
+    </div>
 
 
 
@@ -15,6 +32,7 @@
 
 
 
-    <script src="script.js"></script>
+
+    <script src="script.js" defer> </script>
 </body>
 </html>
