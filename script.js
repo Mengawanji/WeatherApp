@@ -1,9 +1,17 @@
+
 function getWeather() {
+    
     const apiKey = '17af550c731838d8573c31e56b9e47c4'
     const city = document.getElementById('city').value;
+    const cityErrorInput = document.getElementById('cityError')
 
+
+    let isValid = true;
+    cityErrorInput.textContent = "";
+    
     if (!city) {
-        alert('Please enter a city');
+        cityErrorInput.textContent = "Please enter a city";
+        isValid = false;
         return;
     }
 
@@ -17,7 +25,9 @@ function getWeather() {
         })
         .catch(error => {
             console.error('Error fetching current weather data:', error);
-            alert('Error fetching current weather data. Please try again.');
+            cityErrorInput.textContent = "Please enter a city";
+            isValid = false;
+            return;
         });
 
     fetch(forecastUrl)
@@ -27,8 +37,11 @@ function getWeather() {
         })
         .catch(error => {
             console.error('Error fetching hourly forecast data:', error);
-            alert('Error fetching hourly forecast data. Please try again.');
+            cityErrorInput.textContent = "Error fetching hourly forecast data. Please try again.";
+            isValid = false;
+            return;
         });
+ 
 }
 
 function displayWeather(data) {
@@ -97,3 +110,11 @@ function showImage() {
     const weatherIcon = document.getElementById('weather-icon');
     weatherIcon.style.display = 'block'; // Make the image visible once it's loaded
 }
+
+
+
+document.getElementById('city').addEventListener('keyup', function(e) {
+    if (e.key == "Enter") {
+        getWeather ();
+    }
+});
